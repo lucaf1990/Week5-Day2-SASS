@@ -1,0 +1,356 @@
+<!-- Abbiamo bisogno di un sito web per un'agenzia di viaggi!
+
+In questa pagina aggiungerai destinazioni di posti che sogni di visitare in futuro.
+
+Il progetto non richiede alcuna customizzazione di CSS, dovrai crearlo interamente usando le classi di bootstrap,
+ sia per quello che riguarda il layout che lo stile.
+
+
+Testa frequentemente il tuo lavoro nelle 3 principali risoluzioni (mobile, tablet, desktop) 
+usando i developer tools del browser nella sezione emulazione device, per una maggiore precisione.
+
+Inizia utilizzando i componenti esistenti di Bootstrap 5 per creare la tua pagina (modificali all'occorrenza utilizzando 
+le utility classes di bootstrap: colori, spazi, margini, dimensioni etc...)
+Usa container > row > col-* in questo ordine per ottenere un layout responsive perfetto.
+
+Esercizi:
+
+1) Implementa una navbar con questi elementi di menu:
+Home
+Saldi
+Welcome Summer
+Last Minute
+Recensioni
+
+Collegherai ogni sezione della pagina agli elementi del menu corrispondenti. 
+
+2) Aggiungi un logo alla navbar, un qualsiasi logo di agenzia di viaggi, anche inventata.
+
+3) Aggiungi una sezione introduttiva con il nome, il payoff dell'agenzia, 
+una breve descrizione in corsivo e una call-to-action (bottone) "Prenota ora" di colore azzurro chiaro e testo bianco e grassetto
+
+Il background della sezione sarà grigio chiaro e con bordi arrotondati e del padding generoso all'interno
+
+4) Implementa la sezione "Saldi". Qui mostrerai 4 destinazioni.
+
+In questa sezione dovranno esserci:
+
+4 card per destinazioni per linea a schermo grande - desktop (quattro sulla stessa linea)
+3 card per destinazioni per linea a schermo medio  - tablet  (una dovrà scomparire)
+2 card per destinazioni per linea a schermo piccolo - mobile (due per linea)
+
+le card avranno un bordo di 2px azzurro chiaro, il bottone azzurro chiaro e testo default
+
+5) Implementa la sezione "Welcome Summer". Qui mostrerai 6 destinazioni al tuo utente. (nessun bordo, ma stesso stile dei bottoni precedenti)
+
+In questa sezione dovranno esserci:
+
+6 card per destinazioni per linea a schermo extra large
+3 card per destinazioni per linea a schermo grande (desktop)
+2 card per destinazioni per linea a schermo medio (tablet)
+2 card per destinazioni per linea a schermo piccolo (mobile)
+
+6) Implementa la sezione "Offerta del giorno". Qui avrai:
+
+66% dello spazio dedicato all'immagine del luogo di destinazione
+33% dedicato al nome, date, prezzo e un badge con "best offer" come testo
+
+l'immagine avrà i bordi arrotondati e un'ombra leggera
+per il contenuto: il nome dovrà essere più grande del resto,
+le date dovranno essere formattate con font "monospace",
+il prezzo dovrà essere definito come "lead"
+e il badge sarà scuro
+
+
+7) Rendi invisibile la sezione "Offerta del giorno" su schermi piccoli.
+
+8) Aggiungi nella sezione "Welcome Summer" un'ombra grande ad ogni card.
+
+9) Crea una sezione "Last Minute", in cui mostrerai 6 immagini delle destinazioni last minute come rettangoli ombreggiati dai bordi arrotondati, senza testo. Rendile responsive come preferisci!
+
+10) Crea una sezione "Recensioni", dove l'utente potrà trovare alcuni feedback da utenti fittizi. 
+Piccola immagine tonda a sinistra con bordo 2px azzurro, nome utente e recensione a destra
+
+11) Crea un footer con le informazioni dell'agenzia e un bottone "Contattaci".
+
+
+
+EXTRAS
+
+12) Crea un bottone vicino ad ogni sezione per collassarla e riaprirla se premuto.
+
+13) Crea la possibilità di contare il numero di "viaggi" presenti sulla pagina e visualizzare il risultato in un alert.
+
+14) Crea un modale con un campo email e un messaggio.
+
+15) Quando l'utente cliccherà su "Contattaci", il modale dovrà essere visualizzato.
+
+16) Crea una funzione che aggiunga un badge con la scritta "HOT" su ognuna delle offerte "Welcome Summer" posizionato in alto a destra.
+
+17) Crea una funzione che rimuova tutte le "3 " dalla pagina
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AllOverTheWorld</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+  <style>
+    img {
+      height: 170px;
+    }
+
+    #logo {
+      width: 70px;
+      height: 70px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4 ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img id="logo"
+          src="https://www.comune.sassuolo.mo.it/servizi/attivita-produttive-e-commercio/approfondimenti/agenzie-di-viaggio-e-turismo/@@images/098e955f-576e-4d16-8c0e-6776f96281df.jpeg"
+          alt="Logo" class="d-inline-block align-text-top me-1" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Saldi</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active" aria-current="page" href="#"> Welcome Summer </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Last Minutes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">About us</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Where next?" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div class="container bg-light text-dark border border-secondary rounded-5 mb-5  ">
+    <div class="row pt-3 pb-3 mt-3">
+      <div class="col d-flex align-items-center">
+        <p class="display-1 ms-5">LF</p>
+        <p class="display-4 fst-italic ms-5">
+          Travelling to discover the world
+        </p>
+      </div>
+      <div class="row p-4">
+        <div class="col mt-4 text-center">
+          <p class="ms-5 display-6">
+            For sure...The best "trip" of your life
+          </p>
+          <a class="btn btn-primary mt-2 p-3" style="width: 150px" href="#" role="button">Book now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>
+
+  <!-- CARD SALES SECTION -->
+  <p class="ms-5 fw-bold fs-3 ps-5">On Sales</p>
+  <div class="container + mb-2">
+    <div class="row ">
+      <div class="col d-flex p-3 flex-wrap justify-content-evenly">
+        <div class="card " style="width: 16rem; margin-top: 2rem; ">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwe2pt9wI0bqsTBcpKbaIa2A4tNRZGrxxy2Q&usqp=CAU"
+            class="card-img-top" alt="..." />
+          <div class="card-body border border-info d-flex flex-column justify-content-between">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up
+              the bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 16rem; margin-top: 2rem;">
+          <img
+            src="https://www.thelostavocado.com/wp-content/uploads/2020/10/lofoten-island-norvegia-shutterstock_1525300499.jpg"
+            class="card-img-top" alt="..." />
+          <div class="card-body border border-info d-flex flex-column justify-content-between ">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up
+              the bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 16rem; margin-top: 2rem;">
+          <img src="https://images.boscolo.com/it/img/3515585155233-2201171432/finlandia-aurora-boreale-posti-belli.jpg"
+            class="card-img-top" alt="..." />
+          <div class="card-body border border-info d-flex flex-column justify-content-between">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up
+              the bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 16rem; margin-top: 2rem;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgClrzyWHwiG7Km1MXeSm-tSHb-zHPSiabMg&usqp=CAU"
+            class="card-img-top" alt="..." />
+          <div class="card-body border border-info d-flex flex-column justify-content-between">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up
+              the bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- welcome summer part -->
+  <p class="ms-5 fw-bold fs-3 ps-5 mt-5 mb-5">Welcome Summer
+  </p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card-group">
+          <div class="card m-3 shadow-lg">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwe2pt9wI0bqsTBcpKbaIa2A4tNRZGrxxy2Q&usqp=CAU"
+              class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+            </div>
+
+          </div>
+          <div class="card m-3 shadow-lg">
+            <img
+              src="https://www.thelostavocado.com/wp-content/uploads/2020/10/lofoten-island-norvegia-shutterstock_1525300499.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+
+          </div>
+          <div class="card m-3 shadow-lg">
+            <img
+              src="https://images.boscolo.com/it/img/3515585155233-2201171432/finlandia-aurora-boreale-posti-belli.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+
+          </div>
+          <div class="card-group">
+            <div class="card m-3 shadow-lg">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgClrzyWHwiG7Km1MXeSm-tSHb-zHPSiabMg&usqp=CAU"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+              </div>
+
+            </div>
+            <div class="card m-3 shadow-lg">
+              <img src="https://cdn.turistacurioso.it/wp-content/uploads/2019/11/viaggi_imperdibili_1.jpg"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+
+            </div>
+            <div class="card m-3 shadow-lg">
+              <img src="https://www.shopgitemania.it/wp-content/uploads/2018/12/02-4.jpg" class="card-img-top"
+                alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <p class="fw-bold fs-3 mt-5  d-sm-none d-lg-flex">Today's Deal
+    </p>
+    <div class="d-flex d-sm-none d-lg-flex">
+      <div class="card" >
+        <img src="https://www.greenme.it/wp-content/uploads/2013/11/lonely_planet_beautiful_world.jpg"
+          class="card-img-top" style="height: 30rem" alt="...">
+      </div>
+      <div class="ms-4">
+        <h4 class="fs-1">Cappadocia</h4>
+        <h6>05-04-23 - 29-04-23</h6>
+        <p class="fs-3 text-dark">Voli da 500€ <br>
+        non lasciartelo sfuggire</p>
+        <button type="button" class="btn btn-dark rounded-5 fs-7">Best offer</button>
+      </div>
+    </div>
+    <p class="fw-bold fs-3 mt-5  ">Last Minute
+
+<div class="container">
+  <div class="row">
+    <div class="col d-flex flex-wrap justify-content-evenly flex-xl-nowrap ">
+      <div class="card" style="width: 25rem;">
+        <img src="https://beborghi.com/wp-content/uploads/2022/04/Cosa-vedere-in-Cappadocia.jpg" class="card-img-top" alt="...">
+      </div>
+      <div class="card" style="width: 25rem;">
+        <img src="https://www.viaggigiovani.it/images/blog/consigli_di_viaggio/cappadocia/cappadocia.jpg" class="card-img-top" alt="...">
+      </div><div class="card" style="width: 25rem;">
+        <img src="https://stories.weroad.it/wp-content/uploads/2022/07/timur-garifov-p2RbLnqWPVY-unsplash-1619x1080.jpg" class="card-img-top" alt="...">
+      </div><div class="card" style="width: 25rem;">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/65/c7/2d/night-shot.jpg?w=700&h=-1&s=1" class="card-img-top" alt="...">
+      </div><div class="card" style="width: 25rem;">
+        <img src="https://cdn.getyourguide.com/img/tour/5b28f710d1dd6.jpeg/146.jpg" alt="">
+        </div>
+    
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
